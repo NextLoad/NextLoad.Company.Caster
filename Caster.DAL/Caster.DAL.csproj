@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Caster.Common\Caster.Common.csproj">
+      <Project>{4e5c234d-4b45-455f-a014-c4866547fbe6}</Project>
+      <Name>Caster.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caster.Model\Caster.Model.csproj">
+      <Project>{53b01ca5-c7c8-4e78-b459-3b54ee5b2f58}</Project>
+      <Name>Caster.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

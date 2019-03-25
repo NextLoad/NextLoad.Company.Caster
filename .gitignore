@@ -3,3 +3,14 @@
 ################################################################################
 
 /.vs/NextLoad.Company.Caster/v14/.suo
+/Caster.BLL/bin/Debug/Caster.BLL.dll
+/Caster.BLL/bin/Debug
+/Caster.BLL/obj/Debug/Caster.BLL.csproj.FileListAbsolute.txt
+/Caster.BLL/obj/Debug/Caster.BLL.csprojResolveAssemblyReference.cache
+/Caster.BLL/obj/Debug/Caster.BLL.dll
+/Caster.BLL/obj/Debug/Caster.BLL.pdb
+/Caster.BLL/.gitignore
+/Caster.Common/.gitignore
+/Caster.DAL/.gitignore
+/Caster.Model/.gitignore
+/Caster.UI/.gitignore

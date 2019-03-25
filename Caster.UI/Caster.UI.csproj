@@ -45,8 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmManagerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagerInfo.Designer.cs">
+      <DependentUpon>frmManagerInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmManagerInfo.resx">
+      <DependentUpon>frmManagerInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -68,6 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Caster.BLL\Caster.BLL.csproj">
+      <Project>{01e7248f-4fbd-4021-b132-af2636fad7d6}</Project>
+      <Name>Caster.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caster.Common\Caster.Common.csproj">
+      <Project>{4e5c234d-4b45-455f-a014-c4866547fbe6}</Project>
+      <Name>Caster.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caster.Model\Caster.Model.csproj">
+      <Project>{53b01ca5-c7c8-4e78-b459-3b54ee5b2f58}</Project>
+      <Name>Caster.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Caster.Common\Caster.Common.csproj">
+      <Project>{4e5c234d-4b45-455f-a014-c4866547fbe6}</Project>
+      <Name>Caster.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caster.DAL\Caster.DAL.csproj">
+      <Project>{e5c519a1-bbcd-4993-8ae6-d2c47d50364e}</Project>
+      <Name>Caster.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caster.Model\Caster.Model.csproj">
+      <Project>{53b01ca5-c7c8-4e78-b459-3b54ee5b2f58}</Project>
+      <Name>Caster.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
