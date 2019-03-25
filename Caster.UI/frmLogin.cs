@@ -26,9 +26,9 @@ namespace Caster.UI
             string pwd = txtPwd.Text;
             if (miBll.Login(name, pwd))
             {
-                frmManagerInfo frmManagerInfo = new frmManagerInfo();
+                frmMain frmMain = new frmMain();
                 this.Hide();
-                frmManagerInfo.Show();
+                frmMain.Show();
             }
             else
             {
