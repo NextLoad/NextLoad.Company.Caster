@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Caster.BLL;
+using Caster.Model;
 
 namespace Caster.UI
 {
@@ -22,11 +23,12 @@ namespace Caster.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            int type = -1;
             string name = txtName.Text;
             string pwd = txtPwd.Text;
-            if (miBll.Login(name, pwd))
+            if (miBll.Login(name, pwd,out type))
             {
-                frmMain frmMain = new frmMain();
+                frmMain frmMain = new frmMain(type);
                 this.Hide();
                 frmMain.Show();
             }

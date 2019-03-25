@@ -116,11 +116,24 @@ namespace Caster.DAL
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public object GetLoginPwd(string Name)
+        public ManagerInfo GetManagerInfo(string Name)
         {
-            string sqlText = "select MPwd from ManagerInfo where MName = @Name";
-            SQLiteParameter parameter = new SQLiteParameter("@Name",Name);
-            return SQLiteHelper.ExecuteScalar(sqlText, parameter);
+            string sqlText = "select * from ManagerInfo where MName = @Name";
+            SQLiteParameter parameter = new SQLiteParameter("@Name", Name);
+            ManagerInfo mi = null;
+            DataTable dt = SQLiteHelper.ExecuteDataTable(sqlText, parameter);
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                mi = new ManagerInfo()
+                {
+                    MId = Convert.ToInt32(dataRow[0]),
+                    MName = dataRow[1].ToString(),
+                    MPwd = dataRow[2].ToString(),
+                    MType = Convert.ToInt32(dataRow[3])
+                };
+            }
+
+            return mi;
         }
     }
 }

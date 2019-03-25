@@ -65,20 +65,23 @@ namespace Caster.BLL
         /// <param name="name"></param>
         /// <param name="pwd"></param>
         /// <returns></returns>
-        public bool Login(string name, string pwd)
+        public bool Login(string name, string pwd, out int type)
         {
-            object obj = miDal.GetLoginPwd(name);
-            if (obj == null)
+            type = -1;
+            ManagerInfo mi = miDal.GetManagerInfo(name);
+
+            if (mi == null)
             {
                 return false;
             }
 
-            string correctPwd = obj.ToString();
+            string correctPwd = mi.MPwd;
             if (MD5Helper.Encrying(pwd) != correctPwd)
             {
                 return false;
             }
 
+            type = Convert.ToInt32(mi.MType);
             return true;
 
         }

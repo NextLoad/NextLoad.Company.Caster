@@ -12,9 +12,14 @@ namespace Caster.UI
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        /// <summary>
+        /// 权限设置
+        /// </summary>
+        private int type;
+        public frmMain(int type)
         {
             InitializeComponent();
+            this.type = type;
         }
 
         private void ManagerMenu_Click(object sender, EventArgs e)
@@ -31,6 +36,15 @@ namespace Caster.UI
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.ManagerMenu.Visible = false;
+            if (this.type == 1)
+            {
+                this.ManagerMenu.Visible = true;
+            }
         }
     }
 }
