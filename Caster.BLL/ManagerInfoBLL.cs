@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caster.Common;
 using Caster.DAL;
 using Caster.Model;
 
@@ -49,10 +50,38 @@ namespace Caster.BLL
                 return miDal.Update(mi, true) > 0;
             }
         }
-
+        /// <summary>
+        /// 表示删除数据是否成功
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public bool Remove(int Id)
         {
             return miDal.Delete(Id) > 0;
         }
+        /// <summary>
+        /// 表示是否能成功登录
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
+        public bool Login(string name, string pwd)
+        {
+            object obj = miDal.GetLoginPwd(name);
+            if (obj == null)
+            {
+                return false;
+            }
+
+            string correctPwd = obj.ToString();
+            if (MD5Helper.Encrying(pwd) != correctPwd)
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
     }
 }

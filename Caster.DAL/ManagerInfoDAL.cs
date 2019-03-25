@@ -100,12 +100,27 @@ namespace Caster.DAL
             parameters[2].Value = mi.MId;
             return SQLiteHelper.ExecuteNonQuery(sqlText, parameters);
         }
-
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public int Delete(int Id)
         {
             string sqltext = "delete from ManagerInfo where MId = @Id";
             SQLiteParameter parameter = new SQLiteParameter("@Id", Id);
             return SQLiteHelper.ExecuteNonQuery(sqltext, parameter);
+        }
+        /// <summary>
+        /// 获取登录账号的密码
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public object GetLoginPwd(string Name)
+        {
+            string sqlText = "select MPwd from ManagerInfo where MName = @Name";
+            SQLiteParameter parameter = new SQLiteParameter("@Name",Name);
+            return SQLiteHelper.ExecuteScalar(sqlText, parameter);
         }
     }
 }
