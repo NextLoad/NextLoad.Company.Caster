@@ -95,9 +95,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Caster.BLL\Caster.BLL.csproj">
       <Project>{01e7248f-4fbd-4021-b132-af2636fad7d6}</Project>
       <Name>Caster.BLL</Name>

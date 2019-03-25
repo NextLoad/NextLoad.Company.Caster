@@ -14,3 +14,4 @@
 /Caster.DAL/.gitignore
 /Caster.Model/.gitignore
 /Caster.UI/.gitignore
+.vs
