@@ -24,7 +24,8 @@ namespace Caster.UI
 
         private void ManagerMenu_Click(object sender, EventArgs e)
         {
-            frmManagerInfo frmManager = new frmManagerInfo();
+            frmManagerInfo frmManager = frmManagerInfo.GetFrmManagerInfo();
+            frmManager.Focus();
             frmManager.Show();
         }
 
@@ -45,6 +46,13 @@ namespace Caster.UI
             {
                 this.ManagerMenu.Visible = true;
             }
+        }
+
+        private void MemberMenu_Click(object sender, EventArgs e)
+        {
+            frmMemberInfo frmMemberInfo = frmMemberInfo.GetFrmMemberInfo();
+            frmMemberInfo.Focus();
+            frmMemberInfo.Show();
         }
     }
 }

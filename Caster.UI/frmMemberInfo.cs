@@ -19,6 +19,9 @@ namespace Caster.UI
         private MemberTypeInfoBLL mtiBll;
         private int rowIndex;
 
+        private static object obj = new object();
+        private static frmMemberInfo frmMember;
+
         public int RowIndex
         {
             get
@@ -38,11 +41,27 @@ namespace Caster.UI
             }
             set { rowIndex = value; }
         }
-        public frmMemberInfo()
+        private frmMemberInfo()
         {
             InitializeComponent();
             this.miBll = new MemberInfoBLL();
             this.mtiBll = new MemberTypeInfoBLL();
+        }
+
+        public static frmMemberInfo GetFrmMemberInfo()
+        {
+            if (frmMember == null)
+            {
+                lock (obj)
+                {
+                    if (frmMember == null)
+                    {
+                        frmMember = new frmMemberInfo();
+                    }
+                }
+            }
+
+            return frmMember;
         }
 
         private void frmMemberInfo_Load(object sender, EventArgs e)
@@ -191,6 +210,11 @@ namespace Caster.UI
                 LoadList();
                 LoadTypeList();
             }
+        }
+
+        private void frmMemberInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMember = null;
         }
     }
 }

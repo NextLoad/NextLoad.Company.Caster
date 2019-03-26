@@ -72,6 +72,7 @@
             this.MemberMenu.Name = "MemberMenu";
             this.MemberMenu.Size = new System.Drawing.Size(76, 68);
             this.MemberMenu.Text = "toolStripMenuItem2";
+            this.MemberMenu.Click += new System.EventHandler(this.MemberMenu_Click);
             // 
             // DishMenu
             // 

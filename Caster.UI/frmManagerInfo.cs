@@ -14,11 +14,29 @@ namespace Caster.UI
 {
     public partial class frmManagerInfo : Form
     {
+        private static frmManagerInfo frmManager;
+        private static object obj = new object();
         private ManagerInfoBLL miBll;
-        public frmManagerInfo()
+        private frmManagerInfo()
         {
             InitializeComponent();
             miBll = new ManagerInfoBLL();
+        }
+
+        public static frmManagerInfo GetFrmManagerInfo()
+        {
+            if (frmManager == null)
+            {
+                lock (obj)
+                {
+                    if (frmManager == null)
+                    {
+                        frmManager = new frmManagerInfo();
+                    }
+                }
+            }
+
+            return frmManager;
         }
 
         private void frmManagerInfo_Load(object sender, EventArgs e)
@@ -125,6 +143,11 @@ namespace Caster.UI
                 LoadList();
                 ClearText();
             }
+        }
+
+        private void frmManagerInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmManager = null;
         }
     }
 }
