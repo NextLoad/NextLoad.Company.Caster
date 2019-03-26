@@ -77,6 +77,7 @@
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(348, 225);
             this.dgvList.TabIndex = 0;
+            this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             // 
             // Column1
             // 
@@ -126,6 +127,7 @@
             this.btnRemove.TabIndex = 18;
             this.btnRemove.Text = "删除选中的行数据";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // label9
             // 
@@ -145,6 +147,7 @@
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtDiscount
             // 
@@ -177,6 +180,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "添加";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
@@ -214,6 +218,8 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMemberTypeInfo";
             this.Text = "frmMemberTypeInfo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMemberTypeInfo_FormClosed);
+            this.Load += new System.EventHandler(this.frmMemberTypeInfo_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.groupBox2.ResumeLayout(false);
