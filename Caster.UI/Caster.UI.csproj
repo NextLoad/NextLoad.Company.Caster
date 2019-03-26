@@ -63,6 +63,18 @@
     <Compile Include="frmManagerInfo.Designer.cs">
       <DependentUpon>frmManagerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberInfo.Designer.cs">
+      <DependentUpon>frmMemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberTypeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberTypeInfo.Designer.cs">
+      <DependentUpon>frmMemberTypeInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmLogin.resx">
@@ -73,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagerInfo.resx">
       <DependentUpon>frmManagerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberInfo.resx">
+      <DependentUpon>frmMemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberTypeInfo.resx">
+      <DependentUpon>frmMemberTypeInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

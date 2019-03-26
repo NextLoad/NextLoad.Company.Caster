@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ManagerInfo.cs" />
+    <Compile Include="MemberInfo.cs" />
+    <Compile Include="MemberTypeInfo.cs" />
+    <Compile Include="OthserPartialClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
