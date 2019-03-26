@@ -217,7 +217,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMemberTypeInfo";
-            this.Text = "frmMemberTypeInfo";
+            this.Text = "会员类型管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMemberTypeInfo_FormClosed);
             this.Load += new System.EventHandler(this.frmMemberTypeInfo_Load);
             this.groupBox1.ResumeLayout(false);

@@ -54,5 +54,12 @@ namespace Caster.UI
             frmMemberInfo.Focus();
             frmMemberInfo.Show();
         }
+
+        private void DishMenu_Click(object sender, EventArgs e)
+        {
+            frmDishInfo frmDish = frmDishInfo.GetFrmDishInfo();
+            frmDish.Focus();
+            frmDish.Show();
+        }
     }
 }

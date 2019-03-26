@@ -10,4 +10,9 @@ namespace Caster.Model
     {
         public string Mtitle { get; set; }
     }
+
+    public partial class DishInfo
+    {
+        public string DTypeTitle { get; set; }
+    }
 }

@@ -81,6 +81,7 @@
             this.DishMenu.Name = "DishMenu";
             this.DishMenu.Size = new System.Drawing.Size(76, 68);
             this.DishMenu.Text = "toolStripMenuItem3";
+            this.DishMenu.Click += new System.EventHandler(this.DishMenu_Click);
             // 
             // OrderMenu
             // 
