@@ -15,8 +15,7 @@ namespace Caster.UI
     public partial class frmMemberTypeInfo : Form
     {
         private MemberTypeInfoBLL mtiBll;
-        private DialogResult dialogResult = DialogResult.Cancel;
-
+        public event Action MemberTypeInfoChange;
         public frmMemberTypeInfo()
         {
             InitializeComponent();
@@ -90,7 +89,6 @@ namespace Caster.UI
                     MessageBox.Show("修改失败，请稍后再试！");
                 }
             }
-            dialogResult = DialogResult.OK;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -105,12 +103,11 @@ namespace Caster.UI
             {
                 MessageBox.Show("删除失败，请稍后再试！");
             }
-            dialogResult = DialogResult.OK;
         }
 
         private void frmMemberTypeInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.DialogResult = dialogResult;
+            MemberTypeInfoChange?.Invoke();
         }
     }
 }

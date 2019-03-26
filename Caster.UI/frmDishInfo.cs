@@ -200,12 +200,11 @@ namespace Caster.UI
         private void btnAddType_Click(object sender, EventArgs e)
         {
             frmDishTypeInfo frmDishType = new frmDishTypeInfo();
-            if (frmDishType.ShowDialog() == DialogResult.OK)
-            {
-                LoadList();
-                LoadTypeList();
-            }
+            frmDishType.DishTypeInfoChange += LoadList;
+            frmDishType.DishTypeInfoChange += LoadTypeList;
+            frmDishType.ShowDialog();
         }
+
 
         private void frmDishInfo_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -14,7 +14,7 @@ namespace Caster.UI
 {
     public partial class frmDishTypeInfo : Form
     {
-        private DialogResult dialogResult = DialogResult.Cancel;
+        public event Action DishTypeInfoChange;
         private DishTypeInfoBLL dtiBll;
         public frmDishTypeInfo()
         {
@@ -61,7 +61,7 @@ namespace Caster.UI
                 }
 
             }
-            this.dialogResult = DialogResult.OK;
+           
         }
 
         private void ClearText()
@@ -96,12 +96,12 @@ namespace Caster.UI
                     MessageBox.Show("删除失败，请稍后再试！");
                 }
             }
-            this.dialogResult = DialogResult.OK;
+            
         }
 
         private void frmDishTypeInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.DialogResult = dialogResult;
+            DishTypeInfoChange?.Invoke();
         }
 
         private void frmDishTypeInfo_Load(object sender, EventArgs e)

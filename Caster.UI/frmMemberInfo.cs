@@ -205,11 +205,9 @@ namespace Caster.UI
         private void btnAddType_Click(object sender, EventArgs e)
         {
             frmMemberTypeInfo frmMemberType = new frmMemberTypeInfo();
-            if (frmMemberType.ShowDialog() == DialogResult.OK)
-            {
-                LoadList();
-                LoadTypeList();
-            }
+            frmMemberType.MemberTypeInfoChange += LoadList;
+            frmMemberType.MemberTypeInfoChange += LoadTypeList;
+            frmMemberType.ShowDialog();
         }
 
         private void frmMemberInfo_FormClosed(object sender, FormClosedEventArgs e)
