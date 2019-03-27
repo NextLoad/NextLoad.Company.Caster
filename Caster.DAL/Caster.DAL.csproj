@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DishInfoDAL.cs" />
     <Compile Include="DishTypeInfoDAL.cs" />
+    <Compile Include="HallInfoDAL.cs" />
     <Compile Include="ManagerInfoDAL.cs" />
     <Compile Include="MemberInfoDAL.cs" />
     <Compile Include="MemberTypeInfoDAL.cs" />

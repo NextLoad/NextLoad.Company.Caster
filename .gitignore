@@ -20,3 +20,8 @@
 /Caster.DAL/obj/Debug
 /Caster.Model/obj/Debug
 /Caster.UI/obj/Debug
+/Caster.UI/App.config
+/Caster.Common/bin/Debug
+/Caster.DAL/bin/Debug
+/Caster.UI/bin/Debug
+/Caster.Model/bin/Debug
