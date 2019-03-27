@@ -15,6 +15,8 @@ namespace Caster.UI
     public partial class frmHallInfo : Form
     {
         private HallInfoBLL hiBll;
+
+        public event Action ChangeList; 
         public frmHallInfo()
         {
             InitializeComponent();
@@ -105,6 +107,11 @@ namespace Caster.UI
                     MessageBox.Show("删除失败，请稍后再试！");
                 }
             }
+        }
+
+        private void frmHallInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ChangeList?.Invoke();
         }
     }
 }

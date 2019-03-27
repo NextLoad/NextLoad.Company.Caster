@@ -189,6 +189,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmHallInfo";
             this.Text = "厅包管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmHallInfo_FormClosed);
             this.Load += new System.EventHandler(this.frmHallInfo_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

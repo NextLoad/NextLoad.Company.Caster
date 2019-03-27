@@ -15,4 +15,9 @@ namespace Caster.Model
     {
         public string DTypeTitle { get; set; }
     }
+
+    public partial class TableInfo
+    {
+        public string THTitle { get; set; }
+    }
 }

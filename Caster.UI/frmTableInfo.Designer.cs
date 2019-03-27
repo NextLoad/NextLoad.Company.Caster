@@ -30,10 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearchAll = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +52,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ddlFreeSearch = new System.Windows.Forms.ComboBox();
             this.ddlHallSearch = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -91,34 +91,8 @@
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(448, 428);
             this.dgvList.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TId";
-            this.Column1.HeaderText = "编号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TTitle";
-            this.Column2.HeaderText = "名称";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "HallTitle";
-            this.Column3.HeaderText = "厅包";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "TIsFree";
-            this.Column5.HeaderText = "是否空闲";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
+            this.dgvList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvList_CellFormatting);
             // 
             // btnSearchAll
             // 
@@ -128,6 +102,7 @@
             this.btnSearchAll.TabIndex = 5;
             this.btnSearchAll.Text = "显示全部";
             this.btnSearchAll.UseVisualStyleBackColor = true;
+            this.btnSearchAll.Click += new System.EventHandler(this.btnSearchAll_Click);
             // 
             // label2
             // 
@@ -211,6 +186,7 @@
             this.btnRemove.TabIndex = 19;
             this.btnRemove.Text = "删除选中的行数据";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // label9
             // 
@@ -230,6 +206,7 @@
             this.btnAddHall.TabIndex = 13;
             this.btnAddHall.Text = "厅包管理";
             this.btnAddHall.UseVisualStyleBackColor = true;
+            this.btnAddHall.Click += new System.EventHandler(this.btnAddHall_Click);
             // 
             // btnCancel
             // 
@@ -239,6 +216,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -248,6 +226,7 @@
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "添加";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ddlHallAdd
             // 
@@ -332,6 +311,7 @@
             this.ddlFreeSearch.Name = "ddlFreeSearch";
             this.ddlFreeSearch.Size = new System.Drawing.Size(112, 20);
             this.ddlFreeSearch.TabIndex = 9;
+            this.ddlFreeSearch.SelectedIndexChanged += new System.EventHandler(this.ddlFreeSearch_SelectedIndexChanged);
             // 
             // ddlHallSearch
             // 
@@ -341,6 +321,35 @@
             this.ddlHallSearch.Name = "ddlHallSearch";
             this.ddlHallSearch.Size = new System.Drawing.Size(112, 20);
             this.ddlHallSearch.TabIndex = 8;
+            this.ddlHallSearch.SelectedIndexChanged += new System.EventHandler(this.ddlHallSearch_SelectedIndexChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TId";
+            this.Column1.HeaderText = "编号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TTitle";
+            this.Column2.HeaderText = "名称";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "THTitle";
+            this.Column3.HeaderText = "厅包";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "TIsFree";
+            this.Column5.HeaderText = "是否空闲";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // frmTableInfo
             // 
@@ -352,6 +361,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmTableInfo";
             this.Text = "餐桌管理";
+            this.Load += new System.EventHandler(this.frmTableInfo_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -366,10 +376,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Button btnSearchAll;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -392,5 +398,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox ddlFreeSearch;
         private System.Windows.Forms.ComboBox ddlHallSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
