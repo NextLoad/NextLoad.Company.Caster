@@ -14,6 +14,7 @@ namespace Caster.UI
         [STAThread]
         static void Main()
         {
+            //另一个github账号
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());

@@ -16,3 +16,8 @@
 /Caster.UI/.gitignore
 .vs
 /Caster.UI/App.config
+/Caster.BLL/obj/Debug
+/Caster.Common/obj/Debug
+/Caster.DAL/obj/Debug
+/Caster.Model/obj/Debug
+/Caster.UI/obj/Debug
