@@ -17,6 +17,7 @@ namespace Caster.UI
             //另一个github账号
             //另一个github账号
             //直接 pull
+            //所有者更改，fork者同步
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
