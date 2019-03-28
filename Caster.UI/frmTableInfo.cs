@@ -16,13 +16,33 @@ namespace Caster.UI
     {
         private TableInfoBLL tiBll;
         private HallInfoBLL hiBll;
-        public frmTableInfo()
+        private static frmTableInfo frmTable;
+        private static object obj = new object();
+
+        public event Action ChangeFrmMainState;
+
+        private frmTableInfo()
         {
             InitializeComponent();
             this.tiBll = new TableInfoBLL();
             this.hiBll = new HallInfoBLL();
         }
 
+        public static frmTableInfo GetFrmTableInfo()
+        {
+            if (frmTable == null)
+            {
+                lock (obj)
+                {
+                    if (frmTable == null)
+                    {
+                        frmTable = new frmTableInfo();
+                    }
+                }
+            }
+
+            return frmTable;
+        }
         private void frmTableInfo_Load(object sender, EventArgs e)
         {
             LoadList();
@@ -46,7 +66,7 @@ namespace Caster.UI
             dgvList.DataSource = tiBll.GetList(dic);
 
 
-            
+
         }
 
         private void LoadTypeList()
@@ -81,7 +101,9 @@ namespace Caster.UI
         private void btnAddHall_Click(object sender, EventArgs e)
         {
             frmHallInfo frmHall = new frmHallInfo();
+            frmHall.ChangeList += ChangeFrmMainState;
             frmHall.ChangeList += LoadList;
+            frmHall.ChangeList += LoadTypeList;
             frmHall.ShowDialog();
         }
 
@@ -143,6 +165,7 @@ namespace Caster.UI
                     MessageBox.Show("修改失败，请稍后再试！");
                 }
             }
+            ChangeFrmMainState?.Invoke();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -165,6 +188,7 @@ namespace Caster.UI
                     MessageBox.Show("删除失败，请稍后再试！");
                 }
             }
+            ChangeFrmMainState?.Invoke();
         }
 
         private void btnSearchAll_Click(object sender, EventArgs e)
@@ -183,6 +207,11 @@ namespace Caster.UI
         private void ddlFreeSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadList();
+        }
+
+        private void frmTableInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmTable = null;
         }
     }
 }

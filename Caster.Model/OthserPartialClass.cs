@@ -20,4 +20,11 @@ namespace Caster.Model
     {
         public string THTitle { get; set; }
     }
+
+    public partial class OrderDetailInfo
+    {
+        public string ODTitle { get; set; }
+        public decimal ODPrice { get; set; }
+        public int ODishId { get; set; }
+    }
 }

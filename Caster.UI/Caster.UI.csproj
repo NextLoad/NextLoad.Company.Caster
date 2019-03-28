@@ -93,6 +93,18 @@
     <Compile Include="frmMemberTypeInfo.Designer.cs">
       <DependentUpon>frmMemberTypeInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrderDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderDish.Designer.cs">
+      <DependentUpon>frmOrderDish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOrderPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderPay.Designer.cs">
+      <DependentUpon>frmOrderPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTableInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +136,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemberTypeInfo.resx">
       <DependentUpon>frmMemberTypeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOrderDish.resx">
+      <DependentUpon>frmOrderDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOrderPay.resx">
+      <DependentUpon>frmOrderPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTableInfo.resx">
       <DependentUpon>frmTableInfo.cs</DependentUpon>

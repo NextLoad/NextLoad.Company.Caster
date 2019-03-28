@@ -30,6 +30,10 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvList = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearchAll = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,10 +56,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ddlFreeSearch = new System.Windows.Forms.ComboBox();
             this.ddlHallSearch = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -93,6 +93,34 @@
             this.dgvList.TabIndex = 0;
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             this.dgvList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvList_CellFormatting);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TId";
+            this.Column1.HeaderText = "编号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TTitle";
+            this.Column2.HeaderText = "名称";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "THTitle";
+            this.Column3.HeaderText = "厅包";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "TIsFree";
+            this.Column5.HeaderText = "是否空闲";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // btnSearchAll
             // 
@@ -323,34 +351,6 @@
             this.ddlHallSearch.TabIndex = 8;
             this.ddlHallSearch.SelectedIndexChanged += new System.EventHandler(this.ddlHallSearch_SelectedIndexChanged);
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TId";
-            this.Column1.HeaderText = "编号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TTitle";
-            this.Column2.HeaderText = "名称";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "THTitle";
-            this.Column3.HeaderText = "厅包";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "TIsFree";
-            this.Column5.HeaderText = "是否空闲";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
             // frmTableInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -361,6 +361,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmTableInfo";
             this.Text = "餐桌管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTableInfo_FormClosed);
             this.Load += new System.EventHandler(this.frmTableInfo_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ManagerMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.MemberMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,6 +37,8 @@
             this.OrderMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.TableMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.QuitMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tcHallInfo = new System.Windows.Forms.TabControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +102,7 @@
             this.TableMenu.Name = "TableMenu";
             this.TableMenu.Size = new System.Drawing.Size(76, 68);
             this.TableMenu.Text = "toolStripMenuItem5";
+            this.TableMenu.Click += new System.EventHandler(this.TableMenu_Click);
             // 
             // QuitMenu
             // 
@@ -108,11 +113,28 @@
             this.QuitMenu.Text = "toolStripMenuItem6";
             this.QuitMenu.Click += new System.EventHandler(this.QuitMenu_Click);
             // 
+            // tcHallInfo
+            // 
+            this.tcHallInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcHallInfo.Location = new System.Drawing.Point(0, 72);
+            this.tcHallInfo.Name = "tcHallInfo";
+            this.tcHallInfo.SelectedIndex = 0;
+            this.tcHallInfo.Size = new System.Drawing.Size(746, 430);
+            this.tcHallInfo.TabIndex = 1;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "desk1.png");
+            this.imageList1.Images.SetKeyName(1, "desk2.png");
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 502);
+            this.Controls.Add(this.tcHallInfo);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -135,5 +157,7 @@
         private System.Windows.Forms.ToolStripMenuItem OrderMenu;
         private System.Windows.Forms.ToolStripMenuItem TableMenu;
         private System.Windows.Forms.ToolStripMenuItem QuitMenu;
+        private System.Windows.Forms.TabControl tcHallInfo;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
