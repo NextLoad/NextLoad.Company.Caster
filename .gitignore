@@ -25,3 +25,8 @@
 /Caster.DAL/bin/Debug
 /Caster.UI/bin/Debug
 /Caster.Model/bin/Debug
+/Caster.BLL
+/Caster.Common
+/Caster.DAL
+/Caster.Model
+/Caster.UI
