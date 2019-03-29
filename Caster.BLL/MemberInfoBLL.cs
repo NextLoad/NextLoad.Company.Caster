@@ -52,5 +52,10 @@ namespace Caster.BLL
         {
             return miDal.Delete(Id) > 0;
         }
+
+        public MemberInfo GetMemberInfoByMId(int Mid)
+        {
+            return miDal.GetMemberInfoByMId(Mid);
+        }
     }
 }

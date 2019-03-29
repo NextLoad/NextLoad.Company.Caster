@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\lib\System.Data.SQLite.dll</HintPath>
@@ -50,6 +51,8 @@
     <Compile Include="ManagerInfoDAL.cs" />
     <Compile Include="MemberInfoDAL.cs" />
     <Compile Include="MemberTypeInfoDAL.cs" />
+    <Compile Include="OrderDetialInfoDAL.cs" />
+    <Compile Include="OrderInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableInfoDAL.cs" />
   </ItemGroup>

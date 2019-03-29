@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Caster.BLL;
+using Caster.Model;
 
 namespace Caster.UI
 {
@@ -71,18 +72,23 @@ namespace Caster.UI
                 foreach (var tableInfo in tableInfoList)
                 {
                     var table = new ListViewItem(tableInfo.TTitle, tableInfo.TIsFree ? 0 : 1);
+                    table.Tag = tableInfo;
                     lvTableInfo.Items.Add(table);
                     tabPage.Controls.Add(lvTableInfo);
                 }
                 lvTableInfo.DoubleClick += LvTableInfo_DoubleClick;
             }
+
+            this.tcHallInfo.SelectedIndex = TabIndex;
         }
 
         private void LvTableInfo_DoubleClick(object sender, EventArgs e)
         {
-            ListView table = sender as ListView;
+            TabIndex = this.tcHallInfo.SelectedIndex;
+            ListView hallView = sender as ListView;
             //MessageBox.Show(table.SelectedItems[0].Text);
-            frmOrderDish frmOrderDish = new frmOrderDish(table, table.SelectedItems[0]);
+            frmOrderDish frmOrderDish = new frmOrderDish(hallView, hallView.SelectedItems[0]);
+            frmOrderDish.ChangeTabPageImage += LoadtcHallInfo;
             frmOrderDish.Show();
         }
 
@@ -114,6 +120,31 @@ namespace Caster.UI
             frmTableInfo.Focus();
             frmTableInfo.Show();
 
+        }
+
+        private void OrderMenu_Click(object sender, EventArgs e)
+        {
+            if (this.tcHallInfo.SelectedIndex < 0)
+            {
+                MessageBox.Show("请选择需要结账的餐桌！");
+                return;
+            }
+            ListView lv = this.tcHallInfo.SelectedTab.Controls[0] as ListView;
+            if (lv.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选择需要结账的餐桌！");
+                return;
+            }
+            TableInfo ti = lv.SelectedItems[0].Tag as TableInfo;
+            if (ti == null || ti.TIsFree)
+            {
+                MessageBox.Show("该桌暂未下单，无法结账！");
+                return;
+            }
+            frmOrderPay frmOrderPay = new frmOrderPay();
+            frmOrderPay.Tag = ti;
+            frmOrderPay.ChangeTabPageImage += LoadtcHallInfo;
+            frmOrderPay.ShowDialog();
         }
     }
 }

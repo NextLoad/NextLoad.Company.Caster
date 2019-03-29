@@ -188,6 +188,7 @@
             this.btnOrder.TabIndex = 5;
             this.btnOrder.Text = "下单";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnRemove
             // 
@@ -197,6 +198,7 @@
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "删除选中项";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // dgvOrderDetail
             // 
@@ -209,10 +211,14 @@
             this.Column7,
             this.Column9});
             this.dgvOrderDetail.Location = new System.Drawing.Point(6, 41);
+            this.dgvOrderDetail.MultiSelect = false;
             this.dgvOrderDetail.Name = "dgvOrderDetail";
+            this.dgvOrderDetail.ReadOnly = true;
             this.dgvOrderDetail.RowTemplate.Height = 23;
+            this.dgvOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderDetail.Size = new System.Drawing.Size(447, 435);
             this.dgvOrderDetail.TabIndex = 0;
+            this.dgvOrderDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetail_CellClick);
             // 
             // groupBox2
             // 
@@ -247,6 +253,7 @@
             this.Column7.DataPropertyName = "Count";
             this.Column7.HeaderText = "数量";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column9
             // 

@@ -16,7 +16,7 @@ namespace Caster.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain(1));
+            Application.Run(new frmLogin());
         }
     }
 }

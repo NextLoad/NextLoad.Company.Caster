@@ -14,14 +14,20 @@ namespace Caster.UI
 {
     public partial class frmOrderDish : Form
     {
-        List<OrderDetailInfo> odInfoList = new List<OrderDetailInfo>();
+        private List<OrderDetailInfo> odInfoList;
+        private BindingList<OrderDetailInfo> bindOdInfoList;
         private int index;
         private DishInfoBLL diBll;
         private DishTypeInfoBLL dtiBll;
+
+        private OrderDetailInfoBLL odiBll;
+
+        private OrderInfoBLL odBll;
         //厅包信息
         private ListView hallView;
         //餐桌信息
         private ListViewItem tableItem;
+        public event Action ChangeTabPageImage;
         public frmOrderDish(ListView hallView, ListViewItem tableItem)
         {
             InitializeComponent();
@@ -30,13 +36,42 @@ namespace Caster.UI
             this.Text = "厅包：" + this.hallView.Tag + "餐桌：" + tableItem.Text + "-" + this.Text;
             this.diBll = new DishInfoBLL();
             this.dtiBll = new DishTypeInfoBLL();
-            this.index = odInfoList.Count +1;
+            this.odiBll = new OrderDetailInfoBLL();
+            this.odBll = new OrderInfoBLL();
         }
 
         private void frmOrderDish_Load(object sender, EventArgs e)
         {
             LoadDishInfoList();
             LoadTypeList();
+            LoadOrderDetailInfoList();
+            lblMoney.Text = GetOrderSumMoney().ToString();
+        }
+
+        private decimal? GetOrderSumMoney()
+        {
+            decimal? sum = 0;
+            foreach (OrderDetailInfo orderDetailInfo in odInfoList)
+            {
+                sum += orderDetailInfo.Count * orderDetailInfo.ODPrice;
+            }
+
+            return sum;
+        }
+
+        private void LoadOrderDetailInfoList()
+        {
+            TableInfo ti = tableItem.Tag as TableInfo;
+            int tableId = Convert.ToInt32(ti.TId);
+            int orderId = odBll.GetOrderId(tableId);
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic.Add("OrderId", orderId.ToString());
+            odInfoList = odiBll.GetList(dic);
+            this.index = odInfoList.Count + 1;
+            dgvOrderDetail.AutoGenerateColumns = false;
+            dgvOrderDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            bindOdInfoList = new BindingList<OrderDetailInfo>(odInfoList);
+            dgvOrderDetail.DataSource = bindOdInfoList;
         }
 
         private void LoadTypeList()
@@ -77,19 +112,72 @@ namespace Caster.UI
 
         private void dgvAllDish_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var row = dgvAllDish.Rows[e.RowIndex];
-            odInfoList.Add(new OrderDetailInfo()
+            if (e.RowIndex < 0) { return; }
+            var row = dgvAllDish.DataSource as List<DishInfo>;
+            var orderDetailRow = new OrderDetailInfo()
             {
                 ODishId = index++,
-                ODTitle = row.Cells[1].Value.ToString(),
+                ODTitle = row[e.RowIndex].DTitle,
+                DishId = row[e.RowIndex].DId,
                 Count = 1,
-                ODPrice = Convert.ToDecimal(row.Cells[2].Value)
-            });
-            dgvOrderDetail.AutoGenerateColumns = false;
-            dgvOrderDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvOrderDetail.DataSource = null;
-            dgvOrderDetail.DataSource = odInfoList;
-            dgvOrderDetail.Refresh();
+                ODPrice = Convert.ToDecimal(row[e.RowIndex].DPrice)
+            };
+            bindOdInfoList.Add(orderDetailRow);
+            odInfoList = BindingListToList();
+            //odInfoList.Add(orderDetailRow);
+            lblMoney.Text = GetOrderSumMoney().ToString();
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvOrderDetail.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("还未点菜，无法下单！");
+                return;
+            }
+            OrderInfo oi = new OrderInfo();
+            TableInfo ti = tableItem.Tag as TableInfo;
+            oi.TableId = Convert.ToInt32(ti.TId);
+            oi.OMoney = Convert.ToDecimal(lblMoney.Text);
+            if (odBll.Order(ti, oi, odInfoList))
+            {
+                MessageBox.Show("下单成功！");
+                this.Close();
+                ChangeTabPageImage?.Invoke();
+            }
+            else
+            {
+                MessageBox.Show("下单失败");
+            }
+
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvOrderDetail.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("请选择需要删除的菜！");
+                return;
+            }
+
+            if (MessageBox.Show("是否删除？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                bindOdInfoList.RemoveAt(dgvOrderDetail.SelectedRows[0].Index);
+                BindingListToList();
+                odInfoList = BindingListToList();
+                lblMoney.Text = GetOrderSumMoney().ToString();
+            }
+        }
+        private List<OrderDetailInfo> BindingListToList()
+        {
+
+            List<OrderDetailInfo> list = new List<OrderDetailInfo>((BindingList<OrderDetailInfo>)this.dgvOrderDetail.DataSource);
+            return list;
+        }
+        private void dgvOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

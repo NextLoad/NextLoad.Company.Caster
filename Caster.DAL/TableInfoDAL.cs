@@ -98,5 +98,6 @@ namespace Caster.DAL
             SQLiteParameter parameter = new SQLiteParameter("@Id", Id);
             return SQLiteHelper.ExecuteNonQuery(sqltext, parameter);
         }
+
     }
 }

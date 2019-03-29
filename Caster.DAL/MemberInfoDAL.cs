@@ -103,5 +103,30 @@ namespace Caster.DAL
             SQLiteParameter parameter = new SQLiteParameter("@id", Id);
             return SQLiteHelper.ExecuteNonQuery(sqlText, parameter);
         }
+        /// <summary>
+        /// 根据会员编号获取会员信息
+        /// </summary>
+        /// <param name="MId"></param>
+        /// <returns></returns>
+        public MemberInfo GetMemberInfoByMId(int MId)
+        {
+            MemberInfo mi = null;
+            string sqltext =
+                "select mti.MId,mti.Mtitle,mti.Mdiscount,mi.Mid,mi.MName,mi.Mphone,mi.Mmoney from MemberTypeInfo as mti,MemberInfo as mi where mti.MId = mi.MId and mi.MId = @mid and mi.MIsDelete=0 and mti.MIsDelete=0;";
+            SQLiteParameter parameter = new SQLiteParameter("@mid", MId);
+            DataTable dt = SQLiteHelper.ExecuteDataTable(sqltext, parameter);
+            if (dt == null || dt.Rows.Count <= 0)
+            {
+                return mi;
+            }
+            mi = new MemberInfo();
+            mi.MId = Convert.ToInt32(dt.Rows[0][3]);
+            mi.MMoney = Convert.ToDecimal(dt.Rows[0][6]);
+            mi.Mtitle = dt.Rows[0][1].ToString();
+            mi.MName = dt.Rows[0][4].ToString();
+            mi.MPhone = dt.Rows[0][5].ToString();
+            mi.Mdiscount = Convert.ToDecimal(dt.Rows[0][2]);
+            return mi;
+        }
     }
 }

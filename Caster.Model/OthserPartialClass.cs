@@ -9,6 +9,7 @@ namespace Caster.Model
     public partial class MemberInfo
     {
         public string Mtitle { get; set; }
+        public decimal Mdiscount { get; set; }
     }
 
     public partial class DishInfo

@@ -77,6 +77,7 @@
             this.cbkMember.TabIndex = 16;
             this.cbkMember.Text = "是会员";
             this.cbkMember.UseVisualStyleBackColor = true;
+            this.cbkMember.CheckedChanged += new System.EventHandler(this.cbkMember_CheckedChanged);
             // 
             // cbkMoney
             // 
@@ -87,6 +88,7 @@
             this.cbkMoney.TabIndex = 10;
             this.cbkMoney.Text = "使用余额";
             this.cbkMoney.UseVisualStyleBackColor = true;
+            this.cbkMoney.CheckedChanged += new System.EventHandler(this.cbkMoney_CheckedChanged);
             // 
             // lblDiscount
             // 
@@ -168,6 +170,7 @@
             this.btnCancel.TabIndex = 20;
             this.btnCancel.Text = "暂不结账";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtPhone
             // 
@@ -191,6 +194,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(176, 21);
             this.txtId.TabIndex = 1;
+            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // label8
             // 
@@ -209,6 +213,7 @@
             this.btnOrderPay.TabIndex = 19;
             this.btnOrderPay.Text = "确认结账";
             this.btnOrderPay.UseVisualStyleBackColor = true;
+            this.btnOrderPay.Click += new System.EventHandler(this.btnOrderPay_Click);
             // 
             // gbMember
             // 
@@ -223,6 +228,7 @@
             this.gbMember.Controls.Add(this.label2);
             this.gbMember.Controls.Add(this.txtId);
             this.gbMember.Controls.Add(this.label1);
+            this.gbMember.Enabled = false;
             this.gbMember.Location = new System.Drawing.Point(11, 34);
             this.gbMember.Name = "gbMember";
             this.gbMember.Size = new System.Drawing.Size(257, 133);
@@ -244,7 +250,8 @@
             this.Controls.Add(this.btnOrderPay);
             this.Controls.Add(this.gbMember);
             this.Name = "frmOrderPay";
-            this.Text = "frmOrderPay";
+            this.Text = "付款";
+            this.Load += new System.EventHandler(this.frmOrderPay_Load);
             this.gbMember.ResumeLayout(false);
             this.gbMember.PerformLayout();
             this.ResumeLayout(false);
